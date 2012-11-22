@@ -26,9 +26,9 @@ function printTwitterChunk(urlAddress) {
 		var re = /https:\/\/pbs\.twimg\.com\/media\/\S+.jpg/igm;
 		var arImages = obj.items_html.match(re);
 
-		for(var key in arImages) {
-			console.log(arImages[key]);
-		}
+		arImages.forEach(function (imgUrl) {
+			console.log(imgUrl);
+		});
 
 		if(obj.has_more_items) {
 			printTwitterChunk(pageUrl + obj.max_id);
@@ -51,10 +51,6 @@ function getMaxId(accountName) {
 		}
 	});
 }
-
-/*process.argv.forEach(function (val, index) {
-	console.log('index: ' + index + ' value: ' + val);
-});*/
 
 if(process.argv.length < 3) {
 	console.log('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' <TwitterAccount>');
