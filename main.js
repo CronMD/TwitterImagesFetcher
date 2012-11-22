@@ -4,9 +4,6 @@ var url = require('url');
 function getPage(urlString, callback){
 	urlObject = url.parse(urlString);
 
-	urlObject.port = urlObject.port == undefined ? 80 : urlObject.port;
-	urlObject.path = urlObject.path == undefined ? '/' : urlObject.path;
-
 	http.request({host: urlObject.host, port: urlObject.port, path: urlObject.path}, function (res) {
 		var dataBuf = '';
 		res.on('data', function (chunk) {
